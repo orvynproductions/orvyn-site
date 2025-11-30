@@ -157,6 +157,35 @@
     background: #ffffff !important;
 }
 
+
+
+/* ------------------------------------------ */
+/* NEW FIX ADDED BY CHATGPT – TOP BAR ALIGNMENT */
+/* ------------------------------------------ */
+
+/* Align icons (location, email, socials) perfectly */
+.top-bar a i,
+.top-bar small i {
+    font-size: 15px;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+/* Remove underline from top-bar icons */
+.top-bar a {
+    text-decoration: none;
+}
+
+/* Hover color for icons */
+.top-bar a:hover i {
+    color: var(--primary);
+}
+
+/* Keeps text aligned with icons */
+.top-bar small {
+    vertical-align: middle;
+}
+
 /* Prevent transparency on scroll */
 .fixed-top.scrolled {
     background: #ffffff !important;

@@ -465,3 +465,15 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+
+/* Fix mobile header overlapping content */
+body {
+  padding-top: 70px !important;
+}
+
+@media (min-width: 992px) { /* Desktop – navbar + top bar */
+  body {
+    padding-top: 110px !important;
+  }
+}

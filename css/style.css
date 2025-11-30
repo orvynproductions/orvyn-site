@@ -146,6 +146,21 @@
     }
 }
 
+.fixed-top,
+.top-bar,
+.navbar {
+    background: #ffffff !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.navbar.navbar-light {
+    background: #ffffff !important;
+}
+
+/* Prevent transparency on scroll */
+.fixed-top.scrolled {
+    background: #ffffff !important;
+}
 
 /*** Header ***/
 .carousel-caption {

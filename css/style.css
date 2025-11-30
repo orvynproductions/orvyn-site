@@ -167,16 +167,72 @@
   position: relative;
   z-index: 1;
 }
+/* ---------- Fixed: carousel stacking + centered controls + caption pointer handling ---------- */
 
-/* Put controls & indicators clearly above everything */
-#header-carousel .carousel-control-prev,
-#header-carousel .carousel-control-next,
-#header-carousel .carousel-indicators {
-  z-index: 50;            /* high enough to be on top */
+/* Ensure carousel establishes stacking context */
+#header-carousel {
   position: relative;
+  z-index: 1;
 }
 
-/* Keep caption visible but don't let it capture clicks over controls */
+/* Controls & indicators must be above captions/images and absolutely positioned */
+#header-carousel .carousel-indicators {
+  z-index: 70;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1rem;
+}
+
+#header-carousel .carousel-control-prev,
+#header-carousel .carousel-control-next {
+  position: absolute;        /* was relative -> caused them to flow with layout */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 80;               /* clearly above caption and image */
+  width: 3.5rem;             /* fixed visible control size */
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  transition: transform .15s ease;
+}
+
+/* spacing from edges */
+#header-carousel .carousel-control-prev { left: 1rem; }
+#header-carousel .carousel-control-next { right: 1rem; }
+
+/* Make hit area slightly larger on mobile */
+@media (max-width: 768px) {
+  #header-carousel .carousel-control-prev,
+  #header-carousel .carousel-control-next {
+    width: 4.5rem;
+    height: 4.5rem;
+    left: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
+/* Style circular icon (keeps bootstrap background-image visible) */
+#header-carousel .carousel-control-prev-icon,
+#header-carousel .carousel-control-next-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--primary);
+  border: 8px solid var(--primary);
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.2rem 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  z-index: 90;
+}
+
+/* Keep caption visible but don't let it capture clicks for the whole slide */
 #header-carousel .carousel-caption {
   top: 0;
   left: 0;
@@ -184,47 +240,28 @@
   bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
   text-align: start;
-  z-index: 10;            /* lower than controls but above image */
-  pointer-events: none;   /* don't capture pointer events by default */
-  padding: 0 1.25rem;     /* keep content away from edges on mobile */
+  z-index: 20;              /* below controls but above image */
+  pointer-events: none;     /* prevents accidentally blocking controls */
+  padding: 0 1.25rem;
 }
 
-/* Allow interaction for actual clickable elements inside the caption */
+/* Allow interaction for interactive elements inside caption */
 #header-carousel .carousel-caption a,
 #header-carousel .carousel-caption button,
 #header-carousel .carousel-caption .btn {
   pointer-events: auto;
 }
 
-/* Defensive: ensure caption text is readable over images */
+/* Optional gentle backdrop for caption content (keeps text readable) */
 #header-carousel .carousel-caption .col-lg-7 {
-  background: rgba(0,0,0,0.15); /* optional gentle overlay */
+  background: rgba(0,0,0,0.14);
   padding: 1.5rem;
   border-radius: 6px;
+  pointer-events: auto;   /* ensure clickable elements inside are usable */
 }
 
-/* Keep controls comfortably tappable on mobile */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 12%;
-  min-width: 44px;
-  z-index: 50;
-}
-
-/* Make control icons visible and above overlay */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  width: 3rem;
-  height: 3rem;
-  background-color: var(--primary);
-  border: 10px solid var(--primary);
-  border-radius: 3rem;
-  z-index: 60;
-}
-
-/* If you use absolute-positioned images on small screens, ensure they don't overlay controls */
+/* If images are absolutely positioned on mobile, ensure they sit below caption/controls */
 @media (max-width: 768px) {
   #header-carousel .carousel-item img {
     position: absolute;
@@ -235,14 +272,22 @@
     object-fit: cover;
     z-index: 0;
   }
-  #header-carousel .carousel-caption { z-index: 10; }
+  #header-carousel .carousel-caption { z-index: 20; }
 }
 
-/* Optional: highlight for debugging overlay issues (remove later) */
-/*
-#header-carousel .carousel-caption { outline: 1px dashed rgba(255,0,0,0.15); }
-#header-carousel .carousel-control-prev { outline: 1px dashed rgba(0,255,0,0.15); }
-*/
+/* Ensure indicators/controls remain on top */
+#header-carousel .carousel-indicators,
+#header-carousel .carousel-control-prev,
+#header-carousel .carousel-control-next {
+  z-index: 70;
+}
+
+/* Small hover/tap effect */
+#header-carousel .carousel-control-prev:hover,
+#header-carousel .carousel-control-next:hover {
+  transform: translateY(-50%) scale(1.03);
+}
+
 
 
 /*** About ***/

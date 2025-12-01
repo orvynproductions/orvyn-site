@@ -989,6 +989,35 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- 🔧 FIX: MOBILE HEADER OVERLAP (added here) -->
+    <script>
+    (function(){
+      function updateBodyPadding() {
+        var fixedElems = document.querySelectorAll('.fixed-top');
+        var total = 0;
+        fixedElems.forEach(function(el){
+          var style = window.getComputedStyle(el);
+          if (style.display !== 'none' && style.visibility !== 'hidden') {
+            total += el.offsetHeight;
+          }
+        });
+        document.body.style.paddingTop = total + 'px';
+      }
+
+      window.addEventListener('load', updateBodyPadding);
+      window.addEventListener('resize', updateBodyPadding);
+      window.addEventListener('orientationchange', function(){ 
+        setTimeout(updateBodyPadding, 200); 
+      });
+
+      var observer = new MutationObserver(function(){ updateBodyPadding(); });
+      observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+    })();
+    </script>
+
+
+
 </body>
 
 </html>

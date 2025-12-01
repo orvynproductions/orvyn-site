@@ -382,3 +382,11 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+/* Mini cart button tweak */
+#mini-cart-btn { box-shadow: 0 6px 18px rgba(0,0,0,0.12); display:flex; align-items:center; justify-content:center; }
+#mini-cart-count { box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+@media (max-width: 576px) {
+  #mini-cart-btn { right: 12px; bottom: 12px; width:56px; height:56px; }
+  #mini-cart-count { width:20px; height:20px; font-size:11px; top:-5px; right:-5px; }
+}

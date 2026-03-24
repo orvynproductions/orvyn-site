@@ -399,26 +399,27 @@
     background: black;
     color: red;
     padding: 8px 0;
-    z-index: 9999;
     overflow: hidden;
+    z-index: 9999;
 }
 
-/* moving wrapper */
-.marquee-inner {
+/* THE TRACK */
+.marquee {
     display: flex;
-    width: fit-content;
-    animation: scrollLoop 17s linear infinite;
+    width: max-content;
+    animation: scroll 17s linear infinite;
 }
 
-/* each text block */
-.marquee-content {
+/* TEXT */
+.marquee span {
     white-space: nowrap;
-    padding-right: 0; /* NO GAP */
+    display: inline-block;
+    margin-right: 50px;
     font-weight: 500;
 }
 
-/* KEY FIX */
-@keyframes scrollLoop {
+/* ANIMATION */
+@keyframes scroll {
     0% {
         transform: translateX(0);
     }
@@ -427,7 +428,7 @@
     }
 }
 
-/* layout */
+/* PAGE FIX */
 body {
     padding-top: 40px;
 }

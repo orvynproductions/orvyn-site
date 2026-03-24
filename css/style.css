@@ -407,7 +407,7 @@
 .marquee-inner {
     display: flex;
     width: fit-content;
-    animation: scrollLoop 20s linear infinite;
+    animation: scrollLoop 15s linear infinite;
 }
 
 /* each text block */

@@ -403,33 +403,35 @@
     overflow: hidden;
 }
 
+/* KEY FIX HERE */
 .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marqueeMove 15s linear infinite;
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marqueeMove 12s linear infinite;
 }
 
+/* IMPORTANT: prevent line break */
 .marquee-track span {
+    display: inline-block;
     white-space: nowrap;
-    padding-right: 100px;
+    padding-right: 80px;
     font-weight: 500;
 }
 
 @keyframes marqueeMove {
-    0% {
-        transform: translateX(0);
+    from {
+        transform: translateX(100%);
     }
-    100% {
-        transform: translateX(-50%);
+    to {
+        transform: translateX(-100%);
     }
 }
 
-/* Push content down */
+/* layout fix */
 body {
     padding-top: 40px;
 }
 
-/* Push navbar down */
 .container-fluid.fixed-top {
     top: 40px;
 }

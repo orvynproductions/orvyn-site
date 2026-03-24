@@ -429,9 +429,9 @@
 
 /* layout fix */
 body {
-    padding-top: 40px;
+    padding-top: 50px;
 }
 
 .container-fluid.fixed-top {
-    top: 40px;
+    top: 50px;
 }

@@ -403,29 +403,33 @@
     overflow: hidden;
 }
 
-.marquee-content {
-    display: inline-block;
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeMove 15s linear infinite;
+}
+
+.marquee-track span {
     white-space: nowrap;
-    padding-left: 100%;
-    animation: scrollText 12s linear infinite;
+    padding-right: 100px;
     font-weight: 500;
 }
 
-@keyframes scrollText {
+@keyframes marqueeMove {
     0% {
-        transform: translateX(0%);
+        transform: translateX(0);
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
     }
 }
 
-/* Push page down */
+/* Push content down */
 body {
     padding-top: 40px;
 }
 
-/* Push navbar below marquee */
+/* Push navbar down */
 .container-fluid.fixed-top {
     top: 40px;
 }

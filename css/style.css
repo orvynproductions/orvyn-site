@@ -400,18 +400,32 @@
     color: red;
     padding: 8px 0;
     z-index: 9999;
+    overflow: hidden;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: scrollText 12s linear infinite;
     font-weight: 500;
 }
 
+@keyframes scrollText {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Push page down */
 body {
     padding-top: 40px;
 }
 
+/* Push navbar below marquee */
 .container-fluid.fixed-top {
     top: 40px;
-}
-
-.top-marquee marquee {
-    letter-spacing: 1px;
-    font-size: 14px;
 }

@@ -403,23 +403,22 @@
     overflow: hidden;
 }
 
-/* SINGLE CLEAN TRACK */
-.marquee-track {
+/* moving wrapper */
+.marquee-inner {
     display: flex;
-    white-space: nowrap;
-    width: max-content;
-    animation: marqueeMove 30s linear infinite; /* slower & smooth */
+    width: fit-content;
+    animation: scrollLoop 20s linear infinite;
 }
 
-/* TEXT */
-.marquee-track span {
+/* each text block */
+.marquee-content {
     white-space: nowrap;
-    padding-right: 20px; /* small gap */
+    padding-right: 0; /* NO GAP */
     font-weight: 500;
 }
 
-/* PERFECT LOOP */
-@keyframes marqueeMove {
+/* KEY FIX */
+@keyframes scrollLoop {
     0% {
         transform: translateX(0);
     }
@@ -428,7 +427,7 @@
     }
 }
 
-/* layout fix */
+/* layout */
 body {
     padding-top: 40px;
 }

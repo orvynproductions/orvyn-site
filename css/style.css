@@ -398,40 +398,37 @@
     width: 100%;
     background: black;
     color: red;
-    padding: 10px 0;
+    padding: 8px 0;
     z-index: 9999;
     overflow: hidden;
 }
 
-/* KEY FIX HERE */
 .marquee-track {
     display: inline-flex;
     white-space: nowrap;
-    animation: marqueeMove 12s linear infinite;
+    animation: marqueeMove 25s linear infinite; /* slower = smoother */
 }
 
-/* IMPORTANT: prevent line break */
-.marquee-track span {
-    display: inline-block;
+.marquee-track {
+    display: flex;
     white-space: nowrap;
-    padding-right: 80px;
-    font-weight: 500;
+    animation: marqueeMove 20s linear infinite;
 }
 
 @keyframes marqueeMove {
-    from {
-        transform: translateX(100%);
+    0% {
+        transform: translateX(0);
     }
-    to {
-        transform: translateX(-100%);
+    100% {
+        transform: translateX(-50%);
     }
 }
 
 /* layout fix */
 body {
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
 .container-fluid.fixed-top {
-    top: 50px;
+    top: 40px;
 }

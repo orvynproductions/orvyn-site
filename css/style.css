@@ -407,7 +407,7 @@
 .marquee {
     display: flex;
     width: max-content;
-    animation: scroll 17s linear infinite;
+    animation: scroll 20s linear infinite;
 }
 
 /* TEXT */

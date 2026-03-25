@@ -395,44 +395,47 @@
 .top-marquee {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     background: black;
     color: red;
-    padding: 8px 0;
+    padding: 10px 0;
     overflow: hidden;
     z-index: 9999;
 }
 
-/* THE TRACK */
-.marquee {
+/* FORCE NO WRAP */
+.marquee-wrapper {
     display: flex;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
     width: max-content;
-    animation: scroll 20s linear infinite;
+    animation: scrollX 18s linear infinite;
 }
 
-/* TEXT */
-.marquee span {
-    white-space: nowrap;
-    display: inline-block;
-    margin-right: 50px;
+/* FORCE INLINE TEXT */
+.marquee-content {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    padding-right: 60px;
     font-weight: 500;
 }
 
 /* ANIMATION */
-@keyframes scroll {
+@keyframes scrollX {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
     }
 }
 
-/* PAGE FIX */
+/* LAYOUT FIX */
 body {
-    padding-top: 40px;
+    padding-top: 50px;
 }
 
 .container-fluid.fixed-top {
-    top: 40px;
+    top: 50px;
 }

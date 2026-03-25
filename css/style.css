@@ -404,25 +404,25 @@
     z-index: 9999;
 }
 
-/* MAIN TRACK */
+/* CONTINUOUS TRACK */
 .marquee-wrapper {
-    display: inline-block;   /* ✅ KEY CHANGE */
-    white-space: nowrap;     /* ✅ FORCE SINGLE LINE */
+    display: inline-block;
+    white-space: nowrap;
     animation: scrollX 18s linear infinite;
 }
 
 /* TEXT */
 .marquee-content {
-    display: inline;         /* ✅ KEY CHANGE */
+    display: inline;
     white-space: nowrap;
-    margin-right: 80px;      /* spacing between repeats */
+    margin-right: 20px;   /* 🔽 reduced gap */
     font-weight: 500;
 }
 
-/* ANIMATION */
+/* KEY FIX: NO START GAP */
 @keyframes scrollX {
     0% {
-        transform: translateX(100%);
+        transform: translateX(0);      /* 🔥 removed 100% */
     }
     100% {
         transform: translateX(-100%);
